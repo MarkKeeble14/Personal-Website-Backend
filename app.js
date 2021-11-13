@@ -19,7 +19,7 @@ app.use(json());
 app.use(cors());
 app.options('*', cors());
 
-app.get("/gamesdata", async (req, res) => {
+app.get("/games", async (req, res) => {
     axios.get(IReqURL)
     .then(response => {
         res.status(200).send(response.data);
@@ -29,7 +29,7 @@ app.get("/gamesdata", async (req, res) => {
     });
 });
 
-app.get("/musicsdata", async (req, res) => {
+app.get("/songs", async (req, res) => {
     client.getUser(SCUserURL)
     .then(response => {
         async function getSongInfos () {
