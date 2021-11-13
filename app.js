@@ -58,6 +58,10 @@ app.get("/songs", async (req, res) => {
     });
 });
 
+app.get("/", async (req, res) => {
+    res.status(400).send(`Example app listening at http://localhost:${port}`);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
