@@ -21,7 +21,7 @@ app.use(json());
 app.use(cors());
 app.options('*', cors());
 
-app.get(APIRoot + "/games", async (req, res) => {
+app.get(APIRoot + "games", async (req, res) => {
     axios.get(IReqURL)
     .then(response => {
         res.status(200).send(response.data);
@@ -31,7 +31,7 @@ app.get(APIRoot + "/games", async (req, res) => {
     });
 });
 
-app.get(APIRoot + "/songs", async (req, res) => {
+app.get(APIRoot + "songs", async (req, res) => {
     client.getUser(SCUserURL)
     .then(response => {
         async function getSongInfos () {
