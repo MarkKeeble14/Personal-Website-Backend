@@ -12,6 +12,8 @@ const IAPIKey = "WgcK1w0WJTadBjw1OWz1C9O64Uv3s0nVkFQhAUiI";
 const IURL = "https://itch.io/api/1/";
 const IReqURL = IURL + "/" + IAPIKey + "/my-games";
 
+const APIRoot = "/api/";
+
 const port = 8080;
 const app = express();
 
@@ -19,7 +21,7 @@ app.use(json());
 app.use(cors());
 app.options('*', cors());
 
-app.get("/games", async (req, res) => {
+app.get(APIRoot + "/games", async (req, res) => {
     axios.get(IReqURL)
     .then(response => {
         res.status(200).send(response.data);
@@ -29,7 +31,7 @@ app.get("/games", async (req, res) => {
     });
 });
 
-app.get("/songs", async (req, res) => {
+app.get(APIRoot + "/songs", async (req, res) => {
     client.getUser(SCUserURL)
     .then(response => {
         async function getSongInfos () {
@@ -65,3 +67,5 @@ app.get("/", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+module.exports = app;
